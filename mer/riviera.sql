@@ -225,11 +225,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `riviera`.`feactures`
+-- Table `riviera`.`features`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`feactures` ;
+DROP TABLE IF EXISTS `riviera`.`features` ;
 
-CREATE  TABLE IF NOT EXISTS `riviera`.`feactures` (
+CREATE  TABLE IF NOT EXISTS `riviera`.`features` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `created` DATETIME NULL ,
@@ -239,20 +239,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `riviera`.`feactures_properties`
+-- Table `riviera`.`features_properties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`feactures_properties` ;
+DROP TABLE IF EXISTS `riviera`.`features_properties` ;
 
-CREATE  TABLE IF NOT EXISTS `riviera`.`feactures_properties` (
+CREATE  TABLE IF NOT EXISTS `riviera`.`features_properties` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `feacture_id` INT NOT NULL ,
+  `feature_id` INT NOT NULL ,
   `property_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_feactures_properties_feactures1` (`feacture_id` ASC) ,
+  INDEX `fk_feactures_properties_feactures1` (`feature_id` ASC) ,
   INDEX `fk_feactures_properties_properties1` (`property_id` ASC) ,
   CONSTRAINT `fk_feactures_properties_feactures1`
-    FOREIGN KEY (`feacture_id` )
-    REFERENCES `riviera`.`feactures` (`id` )
+    FOREIGN KEY (`feature_id` )
+    REFERENCES `riviera`.`features` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_feactures_properties_properties1`
