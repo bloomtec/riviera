@@ -1,3 +1,4 @@
+/.project
 /app/config/database.php
 /app/tmp/*
 /app/tmp/cache/*
@@ -9,4 +10,4 @@
 /app/tmp/tests/*
 /app/webroot/files/*
 /app/webroot/img/*
-/.project
+/cake/console/cake
