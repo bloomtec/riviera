@@ -113,4 +113,9 @@ class PagesController extends AppController {
 		$this->Session->setFlash(__('Page was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function home() {
+		
+	}
+	
 }
