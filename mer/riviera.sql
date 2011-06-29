@@ -3,7 +3,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `riviera` ;
-CREATE SCHEMA IF NOT EXISTS `riviera` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+CREATE SCHEMA IF NOT EXISTS `riviera` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `riviera` ;
 
 -- -----------------------------------------------------
