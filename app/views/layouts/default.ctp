@@ -37,26 +37,23 @@
 	
 			echo $scripts_for_layout;
 		?>
-		<script type="text/javascript">
-			var server="<?php echo $base_url;?>";
-			var auth=<?php echo json_encode($session->read("Auth"));?>;
-		</script>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<?php echo $this->element("header");?>
+				<!-- HEADER CONTENT -->
 			</div>
 			
 			<div id="content">
-				<?php echo $this->Session->flash(); ?>
-				<?php //echo $this->element("animacion") ?> 
-				<?php echo $content_for_layout; ?> 
-	        <div style="clear:both"></div>
+	
+				<?php echo $this->Session->flash(); ?>	
+	
+				<?php echo $content_for_layout; ?>
+	
 			</div>
-			
+	
 			<div id="footer">
-				<?php echo $this->element("footer");?>
+				<!-- FOOTER CONTENT -->
 			</div>
 		</div>
 	</body>

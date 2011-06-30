@@ -43,9 +43,6 @@
 			
 			echo $scripts_for_layout;
 		?>
-		<script type="text/javascript">
-			var server="<?php echo $base_url;?>";
-		</script>
 	</head>
 	<body>
 		<div id="container">
@@ -60,7 +57,7 @@
 						<?php echo $html->link("Properties", array("controller"=>"properties", "action"=>"index")); ?>
 					</li>
 					<li>
-						<?php echo $html->link(__("logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>
+						<?php echo $html->link(__("Logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>
 					<li>
 				</ul>
 				<?php endif; ?>

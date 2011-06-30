@@ -1,4 +1,4 @@
-<div class="login">	
+<div class="admin_login">	
 	<?php echo $this -> Form -> create(array('action' => 'login'));
 		echo $this -> Form -> inputs(
 			array(
