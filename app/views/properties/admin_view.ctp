@@ -1,11 +1,6 @@
-<div class="properties view">
+<div class="properties_view">
 <h2><?php  __('Property');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $property['Property']['id']; ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($property['Type']['name'], array('controller' => 'types', 'action' => 'view', $property['Type']['id'])); ?>
@@ -63,33 +58,10 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Upadated'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $property['Property']['upadated']; ?>
+			<?php echo $property['Property']['updated']; ?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Property', true), array('action' => 'edit', $property['Property']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Property', true), array('action' => 'delete', $property['Property']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $property['Property']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Types', true), array('controller' => 'types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Type', true), array('controller' => 'types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Communities', true), array('controller' => 'communities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Community', true), array('controller' => 'communities', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Places', true), array('controller' => 'places', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Place', true), array('controller' => 'places', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Pictures', true), array('controller' => 'pictures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Picture', true), array('controller' => 'pictures', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories', true), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category', true), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Features', true), array('controller' => 'features', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Feature', true), array('controller' => 'features', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Specials', true), array('controller' => 'specials', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Special', true), array('controller' => 'specials', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
 <div class="related">
 	<h3><?php __('Related Pictures');?></h3>
@@ -129,11 +101,6 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Picture', true), array('controller' => 'pictures', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>
 <div class="related">
 	<h3><?php __('Related Categories');?></h3>
@@ -171,11 +138,6 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Category', true), array('controller' => 'categories', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>
 <div class="related">
 	<h3><?php __('Related Features');?></h3>
@@ -211,11 +173,6 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Feature', true), array('controller' => 'features', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>
 <div class="related">
 	<h3><?php __('Related Specials');?></h3>
@@ -253,9 +210,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Special', true), array('controller' => 'specials', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

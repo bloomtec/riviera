@@ -1,11 +1,6 @@
-<div class="communities view">
+<div class="communities_view">
 <h2><?php  __('Community');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $community['Community']['id']; ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $community['Community']['name']; ?>
@@ -22,17 +17,6 @@
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Community', true), array('action' => 'edit', $community['Community']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Community', true), array('action' => 'delete', $community['Community']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $community['Community']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Communities', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Community', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
 <div class="related">
 	<h3><?php __('Related Properties');?></h3>
@@ -86,9 +70,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

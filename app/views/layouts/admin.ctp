@@ -54,7 +54,25 @@
 				?>
 				<ul class="nav">
 					<li>
+						<?php echo $html->link("Communities", array("controller"=>"communities", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Communities", array("controller"=>"communities", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Community", array("controller"=>"communities", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
+						<?php echo $html->link("Places", array("controller"=>"places", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Places", array("controller"=>"places", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Place", array("controller"=>"places", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
 						<?php echo $html->link("Properties", array("controller"=>"properties", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Properties", array("controller"=>"properties", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Property", array("controller"=>"properties", "action"=>"add")); ?></li>
+						</ul>
 					</li>
 					<li>
 						<?php echo $html->link(__("Logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>

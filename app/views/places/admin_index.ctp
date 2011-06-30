@@ -1,8 +1,7 @@
-<div class="places index">
+<div class="places_index">
 	<h2><?php __('Places');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('long');?></th>
 			<th><?php echo $this->Paginator->sort('lat');?></th>
@@ -17,7 +16,6 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $place['Place']['id']; ?>&nbsp;</td>
 		<td><?php echo $place['Place']['name']; ?>&nbsp;</td>
 		<td><?php echo $place['Place']['long']; ?>&nbsp;</td>
 		<td><?php echo $place['Place']['lat']; ?>&nbsp;</td>
@@ -42,12 +40,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Place', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

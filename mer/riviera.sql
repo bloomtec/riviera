@@ -66,7 +66,7 @@ CREATE  TABLE IF NOT EXISTS `riviera`.`properties` (
   `time_range` INT NULL COMMENT 'numero de dias que esta disponible la propiedad.' ,
   `show_in_home` TINYINT(1)  NULL ,
   `created` DATETIME NULL ,
-  `upadated` DATETIME NULL ,
+  `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_properties_types` (`type_id` ASC) ,
   INDEX `fk_properties_communities1` (`community_id` ASC) ,
@@ -307,8 +307,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `riviera`;
-INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'rental', NULL, NULL);
-INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'real estate', NULL, NULL);
+INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (1, 'Rental', NULL, NULL);
+INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (2, 'Real Estate', NULL, NULL);
 
 COMMIT;
 
