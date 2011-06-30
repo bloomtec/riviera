@@ -118,4 +118,8 @@ class PagesController extends AppController {
 		
 	}
 	
+	function admin_home() {
+		
+	}
+	
 }
