@@ -263,6 +263,40 @@ CREATE  TABLE IF NOT EXISTS `riviera`.`features_properties` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `riviera`.`roles`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `riviera`.`roles` ;
+
+CREATE  TABLE IF NOT EXISTS `riviera`.`roles` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `riviera`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `riviera`.`users` ;
+
+CREATE  TABLE IF NOT EXISTS `riviera`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(45) NOT NULL ,
+  `password` VARCHAR(45) NOT NULL ,
+  `role_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  INDEX `fk_users_roles` (`role_id` ASC) ,
+  CONSTRAINT `fk_users_roles`
+    FOREIGN KEY (`role_id` )
+    REFERENCES `riviera`.`roles` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -275,5 +309,25 @@ START TRANSACTION;
 USE `riviera`;
 INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'rental', NULL, NULL);
 INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (NULL, 'real estate', NULL, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `riviera`.`roles`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `riviera`;
+INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (1, 'admin');
+INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (2, 'user');
+INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (3, 'client');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `riviera`.`users`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `riviera`;
+INSERT INTO `riviera`.`users` (`id`, `username`, `password`, `role_id`) VALUES (1, 'admin', '55e23b9fe6ba18157d8f45b9785079d87851d791', 1);
 
 COMMIT;

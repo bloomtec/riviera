@@ -2,6 +2,11 @@
 class PagesController extends AppController {
 
 	var $name = 'Pages';
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('home');
+	}
 
 	function index() {
 		$this->Page->recursive = 0;

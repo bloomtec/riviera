@@ -27,58 +27,37 @@
 		</title>
 		<?php
 			echo $this->Html->meta('icon');
-	
+			
 			echo $this->Html->css('cake.generic');
-			echo $this->Html->css('uploadify');
-			echo $this->Html->css('superfish');
+			echo $this->Html->css("ie");
 			
 			echo $this->Html->script("jquery-1.6.1.min.js");
-			echo $this->Html->script("admin.js");
 			echo $this->Html->script("jquery-ui-1.8.14.custom.min.js");
-			echo $this->Html->script("swfobject.js");
-			echo $this->Html->script("jquery.uploadify.v2.1.4.min.js");
-			echo $this->Html->script("upload.js");
-			echo $this->Html->script("superfish.js");
-	    	echo $this->Html->script("fileBrowser.js");
-			
+			echo $this->Html->script("front.js");
+	
 			echo $scripts_for_layout;
 		?>
 		<script type="text/javascript">
 			var server="<?php echo $base_url;?>";
+			var auth=<?php echo json_encode($session->read("Auth"));?>;
 		</script>
 	</head>
 	<body>
 		<div id="container">
-			
 			<div id="header">
-				<?php
-					$user = $this->Session->read('Auth.User');
-					if (!empty($user)) :
-				?>
-				<ul class="nav">
-					<li>
-						<?php echo $html->link("Properties", array("controller"=>"properties", "action"=>"index")); ?>
-					</li>
-					<li>
-						<?php echo $html->link(__("logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>
-					<li>
-				</ul>
-				<?php endif; ?>
+				<?php echo $this->element("header");?>
 			</div>
 			
 			<div id="content">
-	
-				<?php echo $this->Session->flash(); ?>	
-	
-				<?php echo $content_for_layout; ?>
-	
+				<?php echo $this->Session->flash(); ?>
+				<?php //echo $this->element("animacion") ?> 
+				<?php echo $content_for_layout; ?> 
+	        <div style="clear:both"></div>
 			</div>
 			
 			<div id="footer">
-				<!-- FOOTER CONTENT -->
+				<?php echo $this->element("footer");?>
 			</div>
-			
 		</div>
-		<?php echo $this->element('sql_dump'); ?>
 	</body>
 </html>
