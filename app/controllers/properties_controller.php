@@ -23,7 +23,7 @@ class PropertiesController extends AppController {
 				$this->Session->setFlash(__('The property has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The property could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The property could not be saved. Check for required fields or if you have the "Show In Home" option checked verify that you have uploaded a picture and try again.', true));
 			}
 		}
 		$types = $this->Property->Type->find('list');
@@ -92,7 +92,7 @@ class PropertiesController extends AppController {
 				$this->Session->setFlash(__('The property has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The property could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The property could not be saved. Check for required fields or if you have the "Show In Home" option checked verify that you have uploaded a picture and try again.', true));
 			}
 		}
 		$types = $this->Property->Type->find('list');
@@ -104,7 +104,7 @@ class PropertiesController extends AppController {
 		$this->set(compact('types', 'communities', 'places', 'categories', 'features', 'specials'));
 	}
 
-	function admin_edit($id = null) {
+	function admin_edit($id = null) {		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid property', true));
 			$this->redirect(array('action' => 'index'));

@@ -33,12 +33,61 @@ if (!empty($_FILES)) {
 	// $typesArray = split('\|',$fileTypes);
 	// $fileParts  = pathinfo($_FILES['Filedata']['name']);
 	
+		/**
+	 * Validar si el nombre de archivo ya existe o no.
+	 */	
+	if (!file_exists($targetFile)) {
+		// El archivo no existe
+		//
+		move_uploaded_file($tempFile,$targetFile);
+		echo str_replace($_SERVER['DOCUMENT_ROOT'],'',$targetFile);
+	} else {
+		// El archivo existe
+		//
+		
+		// Partir el nombre en partes
+		//
+		$doc_name_parts = explode('.', $_FILES['Filedata']['name']);
+		
+		// Sacar la extension del documento
+		//
+		$doc_ext = strtolower($doc_name_parts[sizeof($doc_name_parts) - 1]);
+		
+		// Quitar la extension del nombre del documento
+		//
+		unset($doc_name_parts[sizeof($doc_name_parts) - 1]);
+		
+		// Dejar el nombre del documento completo de nuevo
+		//
+		$doc_name = implode('.', $doc_name_parts);
+		
+		// Crear un nombre que no exista ya entre los documentos
+		//
+		for ($i = 1; true; $i++) {
+			$tmp_name = $doc_name . ' (' . $i . ').' . $doc_ext;
+			
+			$targetFile =  str_replace('//','/',$targetPath) . $tmp_name;
+			
+			if (file_exists($targetFile)) {
+				// Existe un documento con el nombre nuevo, seguir creando.
+				//
+			} else {
+				// No existe un documento con el nuevo nombre, crearlo.
+				//
+				move_uploaded_file($tempFile,$targetFile);
+				echo str_replace($_SERVER['DOCUMENT_ROOT'],'',$targetFile);
+				break;
+			}
+		}
+		
+	}
+	
 	// if (in_array($fileParts['extension'],$typesArray)) {
 		// Uncomment the following line if you want to make the directory if it doesn't exist
 		// mkdir(str_replace('//','/',$targetPath), 0755, true);
 		
-		move_uploaded_file($tempFile,$targetFile);
-		echo str_replace($_SERVER['DOCUMENT_ROOT'],'',$targetFile);
+		//move_uploaded_file($tempFile,$targetFile);
+		//echo str_replace($_SERVER['DOCUMENT_ROOT'],'',$targetFile);
 	// } else {
 	// 	echo 'Invalid file type.';
 	// }

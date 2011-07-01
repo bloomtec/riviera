@@ -5,7 +5,7 @@ $(document).ready(
 			$('#upload').uploadify({
 				'uploader' : server + 'swf/uploadify.swf',
 				'script' : server + 'uploadify.php',
-				'folder' : server + 'app/webroot/img',
+				'folder' : server + 'app/webroot/img/pictures',
 				'auto' : true,
 				'cancelImg' : server + 'img/cancel.png',
 				'onComplete' : function(a, b, c, d) {
@@ -16,13 +16,13 @@ $(document).ready(
 					{
 						'uploader' : server + 'swf/uploadify.swf',
 						'script' : server + 'uploadify.php',
-						'folder' : server + 'app/webroot/img',
+						'folder' : server + 'app/webroot/img/pictures',
 						'auto' : true,
 						'cancelImg' : server + 'img/cancel.png',
 						'onComplete' : function(a, b, c, d) {
 							var name = c.name;
 							$(".preview").html(
-									'<img  src="' + server + 'img/' + name
+									'<img  src="' + server + 'img/pictures/' + name
 											+ '" />');
 							$("#single-field").val(name);
 

@@ -32,14 +32,14 @@
 			echo $this->Html->css('uploadify');
 			echo $this->Html->css('superfish');
 			
-			echo $this->Html->script("jquery-1.6.1.min.js");
-			echo $this->Html->script("admin.js");
-			echo $this->Html->script("jquery-ui-1.8.14.custom.min.js");
 			echo $this->Html->script("swfobject.js");
+			echo $this->Html->script("jquery-1.6.1.min.js");
 			echo $this->Html->script("jquery.uploadify.v2.1.4.min.js");
+			echo $this->Html->script("jquery-ui-1.8.14.custom.min.js");
+			echo $this->Html->script("jquery.validate.min.js");
 			echo $this->Html->script("upload.js");
 			echo $this->Html->script("superfish.js");
-	    	echo $this->Html->script("fileBrowser.js");
+			echo $this->Html->script("admin.js");
 			
 			echo $scripts_for_layout;
 		?>
@@ -72,6 +72,20 @@
 						<ul>
 							<li><?php echo $html->link("List Properties", array("controller"=>"properties", "action"=>"index")); ?></li>
 							<li><?php echo $html->link("Add Property", array("controller"=>"properties", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
+						<?php echo $html->link("Specials", array("controller"=>"specials", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Specials", array("controller"=>"specials", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Special", array("controller"=>"specials", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
+						<?php echo $html->link("Pictures", array("controller"=>"pictures", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Pictures", array("controller"=>"pictures", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Picture", array("controller"=>"pictures", "action"=>"add")); ?></li>
 						</ul>
 					</li>
 					<li>

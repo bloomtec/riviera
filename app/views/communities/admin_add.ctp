@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php __('Add Community'); ?></legend>
 	<?php
+		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 	?>
 	</fieldset>

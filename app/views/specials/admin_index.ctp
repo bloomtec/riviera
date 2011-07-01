@@ -1,12 +1,9 @@
-<div class="specials index">
+<div class="specials_index">
 	<h2><?php __('Specials');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('description');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('updated');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -18,11 +15,8 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $special['Special']['id']; ?>&nbsp;</td>
 		<td><?php echo $special['Special']['name']; ?>&nbsp;</td>
 		<td><?php echo $special['Special']['description']; ?>&nbsp;</td>
-		<td><?php echo $special['Special']['created']; ?>&nbsp;</td>
-		<td><?php echo $special['Special']['updated']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $special['Special']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $special['Special']['id'])); ?>
@@ -44,12 +38,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Special', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

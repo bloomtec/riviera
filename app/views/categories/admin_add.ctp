@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php __('Admin Add Category'); ?></legend>
 	<?php
+		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('description');
 		echo $this->Form->input('Property');
