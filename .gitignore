@@ -10,4 +10,5 @@
 /app/tmp/tests/*
 /app/webroot/files/*
 /app/webroot/img/*
+/app/webroot/img/pictures/*
 /cake/console/cake
