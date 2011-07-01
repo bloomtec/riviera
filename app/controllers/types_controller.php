@@ -29,4 +29,12 @@ class TypesController extends AppController {
 		$this->set('type', $this->Type->read(null, $id));
 	}
 	
+	function listProperties($type_id = null) {
+		$properties = null;	
+		if ($type_id) {
+			$properties = $this->Type->find('all', array('conditions' => array('Property.type_id' => $type_id)));
+		}
+		return $properties;
+	}
+	
 }

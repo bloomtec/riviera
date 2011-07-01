@@ -23,7 +23,7 @@
 		echo $this->Form->input('time_range');
 		echo $this->Form->input('Category', array('type' => 'select','multiple' => 'checkbox'));
 		echo $this->Form->input('Feature', array('type' => 'select','multiple' => 'checkbox'));
-		echo $this->Form->input('Special');
+		echo $this->Form->input('Special', array('type' => 'select','multiple' => 'checkbox'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

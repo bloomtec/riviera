@@ -113,4 +113,13 @@ class PlacesController extends AppController {
 		$this->Session->setFlash(__('Place was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function listProperties($place_id = null) {
+		$properties = null;	
+		if ($place_id) {
+			$properties = $this->Place->find('all', array('conditions' => array('Property.place_id' => $place_id)));
+		}
+		return $properties;
+	}
+	
 }

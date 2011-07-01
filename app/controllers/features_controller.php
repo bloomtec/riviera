@@ -121,4 +121,21 @@ class FeaturesController extends AppController {
 		$this->Session->setFlash(__('Feature was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function listProperties($feature_id = null) {
+		$properties = null;	
+		if ($feature_id) {
+			$sql =
+				"SELECT *
+				FROM `properties` as `Property`
+				WHERE `Property`.`id` IN (
+					SELECT DISTINCT `fp`.`property_id`
+					FROM `features_properties` as `fp`
+					WHERE `fp`.`feature_id` = $feature_id
+				)";
+			$properties = $this->Place->query($sql);
+		}
+		return $properties;
+	}
+	
 }

@@ -1,11 +1,8 @@
-<div class="features index">
+<div class="features_index">
 	<h2><?php __('Features');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('updated');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -17,10 +14,7 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $feature['Feature']['id']; ?>&nbsp;</td>
 		<td><?php echo $feature['Feature']['name']; ?>&nbsp;</td>
-		<td><?php echo $feature['Feature']['created']; ?>&nbsp;</td>
-		<td><?php echo $feature['Feature']['updated']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $feature['Feature']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $feature['Feature']['id'])); ?>
@@ -42,12 +36,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Feature', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

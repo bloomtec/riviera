@@ -121,4 +121,21 @@ class SpecialsController extends AppController {
 		$this->Session->setFlash(__('Special was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function listProperties($special_id = null) {
+		$properties = null;	
+		if ($special_id) {
+			$sql =
+				"SELECT *
+				FROM `properties` as `Property`
+				WHERE `Property`.`id` IN (
+					SELECT DISTINCT `ps`.`property_id`
+					FROM `properties_specials` as `ps`
+					WHERE `ps`.`special_id` = $special_id
+				)";
+			$properties = $this->Place->query($sql);
+		}
+		return $properties;
+	}
+	
 }

@@ -121,4 +121,21 @@ class CategoriesController extends AppController {
 		$this->Session->setFlash(__('Category was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function listProperties($categoy_id = null) {
+		$properties = null;	
+		if ($categoy_id) {
+			$sql =
+				"SELECT *
+				FROM `properties` as `Property`
+				WHERE `Property`.`id` IN (
+					SELECT DISTINCT `cp`.`property_id`
+					FROM `categories_properties` as `cp`
+					WHERE `cp`.`category_id` = $categoy_id
+				)";
+			$properties = $this->Place->query($sql);
+		}
+		return $properties;
+	}
+	
 }

@@ -96,6 +96,13 @@
 						</ul>
 					</li>
 					<li>
+						<?php echo $html->link("Features", array("controller"=>"features", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Features", array("controller"=>"features", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Feature", array("controller"=>"features", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
 						<?php echo $html->link(__("Logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>
 					<li>
 				</ul>

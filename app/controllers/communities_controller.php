@@ -113,4 +113,13 @@ class CommunitiesController extends AppController {
 		$this->Session->setFlash(__('Community was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function listProperties($community_id = null) {
+		$properties = null;	
+		if ($community_id) {
+			$properties = $this->Community->find('all', array('conditions' => array('Property.community_id' => $community_id)));
+		}
+		return $properties;
+	}
+	
 }
