@@ -89,6 +89,13 @@
 						</ul>
 					</li>
 					<li>
+						<?php echo $html->link("Categories", array("controller"=>"categories", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Categories", array("controller"=>"categories", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Category", array("controller"=>"categories", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
 						<?php echo $html->link(__("Logout",true),array("controller"=>"users","action"=>"logout"), array("class"=>"logout"))?>
 					<li>
 				</ul>

@@ -1,11 +1,6 @@
-<div class="categories view">
+<div class="categories_view">
 <h2><?php  __('Category');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $category['Category']['id']; ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $category['Category']['name']; ?>
@@ -28,23 +23,11 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Category', true), array('action' => 'edit', $category['Category']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Category', true), array('action' => 'delete', $category['Category']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $category['Category']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
 <div class="related">
 	<h3><?php __('Related Properties');?></h3>
 	<?php if (!empty($category['Property'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Id'); ?></th>
 		<th><?php __('Type Id'); ?></th>
 		<th><?php __('Community Id'); ?></th>
 		<th><?php __('Place Id'); ?></th>
@@ -68,7 +51,6 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $property['id'];?></td>
 			<td><?php echo $property['type_id'];?></td>
 			<td><?php echo $property['community_id'];?></td>
 			<td><?php echo $property['place_id'];?></td>
@@ -91,9 +73,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

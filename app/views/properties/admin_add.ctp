@@ -21,8 +21,8 @@
 	<?php
 		echo $this->Form->hidden('picture', array("id" => "single-field"));
 		echo $this->Form->input('time_range');
-		echo $this->Form->input('Category');
-		echo $this->Form->input('Feature');
+		echo $this->Form->input('Category', array('type' => 'select','multiple' => 'checkbox'));
+		echo $this->Form->input('Feature', array('type' => 'select','multiple' => 'checkbox'));
 		echo $this->Form->input('Special');
 	?>
 	</fieldset>
