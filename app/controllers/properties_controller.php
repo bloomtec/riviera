@@ -2,6 +2,11 @@
 class PropertiesController extends AppController {
 
 	var $name = 'Properties';
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('view');
+	}
 
 	function index() {
 		$this->Property->recursive = 0;

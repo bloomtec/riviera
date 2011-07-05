@@ -2,7 +2,12 @@
 class PicturesController extends AppController {
 
 	var $name = 'Pictures';
-
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('view');
+	}
+	
 	function index() {
 		$this->Picture->recursive = 0;
 		$this->set('pictures', $this->paginate());

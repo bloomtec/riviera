@@ -2,7 +2,12 @@
 class CommunitiesController extends AppController {
 
 	var $name = 'Communities';
-
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listProperties');
+	}
+	
 	function index() {
 		$this->Community->recursive = 0;
 		$this->set('communities', $this->paginate());
@@ -117,7 +122,7 @@ class CommunitiesController extends AppController {
 	function listProperties($community_id = null) {
 		$properties = null;	
 		if ($community_id) {
-			$properties = $this->Community->find('all', array('conditions' => array('Property.community_id' => $community_id)));
+			$properties = $this->Community->Property->find('all', array('conditions' => array('Property.community_id' => $community_id)));
 		}
 		return $properties;
 	}

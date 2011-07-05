@@ -2,6 +2,11 @@
 class SpecialsController extends AppController {
 
 	var $name = 'Specials';
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listProperties', 'view');
+	}
 
 	function index() {
 		$this->Special->recursive = 0;
@@ -133,7 +138,7 @@ class SpecialsController extends AppController {
 					FROM `properties_specials` as `ps`
 					WHERE `ps`.`special_id` = $special_id
 				)";
-			$properties = $this->Place->query($sql);
+			$properties = $this->Special->query($sql);
 		}
 		return $properties;
 	}

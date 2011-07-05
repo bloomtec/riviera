@@ -2,7 +2,12 @@
 class CategoriesController extends AppController {
 
 	var $name = 'Categories';
-
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listProperties', 'view');
+	}
+	
 	function index() {
 		$this->Category->recursive = 0;
 		$this->set('categories', $this->paginate());
@@ -133,7 +138,7 @@ class CategoriesController extends AppController {
 					FROM `categories_properties` as `cp`
 					WHERE `cp`.`category_id` = $categoy_id
 				)";
-			$properties = $this->Place->query($sql);
+			$properties = $this->Category->query($sql);
 		}
 		return $properties;
 	}

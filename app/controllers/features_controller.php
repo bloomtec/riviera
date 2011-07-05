@@ -2,6 +2,11 @@
 class FeaturesController extends AppController {
 
 	var $name = 'Features';
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listProperties', 'view');
+	}
 
 	function index() {
 		$this->Feature->recursive = 0;
@@ -133,7 +138,7 @@ class FeaturesController extends AppController {
 					FROM `features_properties` as `fp`
 					WHERE `fp`.`feature_id` = $feature_id
 				)";
-			$properties = $this->Place->query($sql);
+			$properties = $this->Feature->query($sql);
 		}
 		return $properties;
 	}

@@ -2,6 +2,11 @@
 class PlacesController extends AppController {
 
 	var $name = 'Places';
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listProperties');
+	}
 
 	function index() {
 		$this->Place->recursive = 0;
@@ -117,7 +122,7 @@ class PlacesController extends AppController {
 	function listProperties($place_id = null) {
 		$properties = null;	
 		if ($place_id) {
-			$properties = $this->Place->find('all', array('conditions' => array('Property.place_id' => $place_id)));
+			$properties = $this->Place->Property->find('all', array('conditions' => array('Property.place_id' => $place_id)));
 		}
 		return $properties;
 	}
