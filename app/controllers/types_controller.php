@@ -5,12 +5,7 @@ class TypesController extends AppController {
 
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('listProperties');
-	}
-
-	function index() {
-		$this->Type->recursive = 0;
-		$this->set('types', $this->paginate());
+		$this->Auth->allow('listProperties', 'view');
 	}
 
 	function view($id = null) {
