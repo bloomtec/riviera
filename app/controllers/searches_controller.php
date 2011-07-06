@@ -65,8 +65,18 @@ class SearchesController extends AppController {
 			$sql_ands =
 				"SELECT *
 				FROM `properties` as `Property`, `types` as `Type`, `communities` as `Community`, `places` as `Place`
-				WHERE `Property`.`type_id` = $type_id
-				AND `Property`.`community_id` = $community_id
+				WHERE `Property`.`type_id` = $type_id";
+				
+			if (!empty($community_id)) {
+				$sql_ands =
+					$sql_ands .
+					"
+					AND `Property`.`community_id` = $community_id";
+			}
+				
+			$sql_ands =
+				$sql_ands .
+				"
 				AND `Property`.`place_id` = $place_id
 				AND `Property`.`type_id` = `Type`.`id`
 				AND `Property`.`community_id` = `Community`.`id`
