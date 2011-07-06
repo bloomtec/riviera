@@ -2,7 +2,13 @@
 class NewsController extends AppController {
 
 	var $name = 'News';
-
+	function beforeFilter() {
+		parent::beforeFilter();
+			$this->Auth->allow('listProperties', 'view','index');
+	}
+	function lasts(){
+		return $this->News->find("all",array("limit"=>"5","order"=>array("News.id DESC"))); 	
+	}
 	function index() {
 		$this->News->recursive = 0;
 		$this->set('news', $this->paginate());

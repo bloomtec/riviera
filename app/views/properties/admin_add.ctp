@@ -15,7 +15,7 @@
 		echo "<div style='clear:both;'></div>";
 		echo "<fieldset>";
 		echo $this->Form->input('type_id');
-		echo $this->Form->input('community_id');
+		echo $this->Form->input('community_id',array("empty"=>"select a community"));
 		echo $this->Form->input('place_id');
 		echo "<div style='clear:both;'></div>";
 		echo "</fieldset>";

@@ -35,6 +35,7 @@
 			echo $this->Html->script("jquery-1.6.1.min.js");
 			echo $this->Html->script("jquery-ui-1.8.14.custom.min.js");
 			echo $this->Html->script("front.js");
+			
 	
 			echo $scripts_for_layout;
 		?>
