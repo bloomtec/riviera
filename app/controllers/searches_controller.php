@@ -1,174 +1,92 @@
 <?php
 class SearchesController extends AppController {
 	
-	var $uses = array('Search', 'Type', 'Community', 'Place', 'Category', 'Special', 'Feature', 'Property');
+	var $uses = array('Search', 'Type', 'Community', 'Place', 'Category', 'Special', 'Feature');
 	
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('search');
 	}
+	
+	private function arriving($data) {
+		return 
+			$data['Search']['min_range']['year'] .
+			"-" .
+			$data['Search']['min_range']['month'] .
+			"-" .
+			$data['Search']['min_range']['day'];
+	}
+	
+	private function departing($data) {
+		return 
+			$data['Search']['max_range']['year'] .
+			"-" .
+			$data['Search']['max_range']['month'] .
+			"-" .
+			$data['Search']['max_range']['day'];
+	}
+	
+	private function categories($data) {
+		$categories_ids = "(";
+		if (!empty($data['Search']['categories'])) {
+			for ($i=0; $i < count($data['Search']['categories']); $i++) {
+				 if (($i + 1) < count($data['Search']['categories'])) {
+				 	$categories_ids = $categories_ids . $data['Search']['categories'][$i] . ", ";
+				 } else {
+				 	$categories_ids = $categories_ids . $data['Search']['categories'][$i];
+				 }
+			}
+		}
+		$categories_ids = $categories_ids . ")";
+		return $categories_ids;
+	}
+	
+	private function specials($data) {
+		$specials_ids = "(";
+		if (!empty($data['Search']['specials'])) {
+			for ($i=0; $i < count($data['Search']['specials']); $i++) {
+				 if (($i + 1) < count($data['Search']['specials'])) {
+				 	$specials_ids = $specials_ids . $data['Search']['specials'][$i] . ", ";
+				 } else {
+				 	$specials_ids = $specials_ids . $data['Search']['specials'][$i];
+				 }
+			}
+		}
+		$specials_ids = $specials_ids . ")";
+		return $specials_ids;
+	}
+	
+	private function features($data) {
+		$features_ids = "(";
+		if (!empty($data['Search']['features'])) {
+			for ($i=0; $i < count($data['Search']['features']); $i++) {
+				 if (($i + 1) < count($data['Search']['features'])) {
+				 	$features_ids = $features_ids . $data['Search']['features'][$i] . ", ";
+				 } else {
+				 	$features_ids = $features_ids . $data['Search']['features'][$i];
+				 }
+			}
+		}
+		$features_ids = $features_ids . ")";
+		return $features_ids;
+	}
 
 	function search() {
+			
 		if (!empty($this->data)){
 			$type_id = $this->data['Search']['types'];
 			$community_id = $this->data['Search']['communities'];
 			$place_id = $this->data['Search']['places'];
-			$arriving =
-				$this->data['Search']['min_range']['year'] .
-				"-" .
-				$this->data['Search']['min_range']['month'] .
-				"-" .
-				$this->data['Search']['min_range']['day'];
-			$departing =
-				$this->data['Search']['max_range']['year'] .
-				"-" .
-				$this->data['Search']['max_range']['month'] .
-				"-" .
-				$this->data['Search']['max_range']['day'];
-			
-			$categories_ids = "(";
-			if (!empty($this->data['Search']['categories'])) {
-				for ($i=0; $i < count($this->data['Search']['categories']); $i++) {
-					 if (($i + 1) < count($this->data['Search']['categories'])) {
-					 	$categories_ids = $categories_ids . $this->data['Search']['categories'][$i] . ", ";
-					 } else {
-					 	$categories_ids = $categories_ids . $this->data['Search']['categories'][$i];
-					 }
-				}
-			}
-			$categories_ids = $categories_ids . ")";
-			
-			$specials_ids = "(";
-			if (!empty($this->data['Search']['specials'])) {
-				for ($i=0; $i < count($this->data['Search']['specials']); $i++) {
-					 if (($i + 1) < count($this->data['Search']['specials'])) {
-					 	$specials_ids = $specials_ids . $this->data['Search']['specials'][$i] . ", ";
-					 } else {
-					 	$specials_ids = $specials_ids . $this->data['Search']['specials'][$i];
-					 }
-				}
-			}
-			$specials_ids = $specials_ids . ")";
-			
-			$features_ids = "(";
-			if (!empty($this->data['Search']['features'])) {
-				for ($i=0; $i < count($this->data['Search']['features']); $i++) {
-					 if (($i + 1) < count($this->data['Search']['features'])) {
-					 	$features_ids = $features_ids . $this->data['Search']['features'][$i] . ", ";
-					 } else {
-					 	$features_ids = $features_ids . $this->data['Search']['features'][$i];
-					 }
-				}
-			}
-			$features_ids = $features_ids . ")";
-			
-			$sql_ands =
-				"SELECT *
-				FROM `properties` as `Property`, `types` as `Type`, `communities` as `Community`, `places` as `Place`
-				WHERE `Property`.`type_id` = $type_id";
-				
-			if (!empty($community_id)) {
-				$sql_ands =
-					$sql_ands .
-					"
-					AND `Property`.`community_id` = $community_id";
-			}
-				
-			$sql_ands =
-				$sql_ands .
-				"
-				AND `Property`.`place_id` = $place_id
-				AND `Property`.`type_id` = `Type`.`id`
-				AND `Property`.`community_id` = `Community`.`id`
-				AND `Property`.`place_id` = `Place`.`id`
-				AND `Property`.`arriving` <= '$arriving'
-				AND `Property`.`departing` >= '$departing'";
-			
-			$sql = $sql_ands;
-				
-			if (strlen($categories_ids) > 2 || strlen($specials_ids) > 2 || strlen($features_ids) > 2) {
-				$i = 0;
-				
-				if (strlen($categories_ids) > 2) {
-					$i++;
-				}
-				if (strlen($specials_ids) > 2) {
-					$i++;
-				}
-				if (strlen($features_ids) > 2) {
-					$i++;
-				}
-				
-				$sql_ors =
-				"
-				AND (";
-				
-				if (strlen($categories_ids) > 2) {
-					$sql_ors = $sql_ors . "
-						`Property`.`id` IN (
-							SELECT DISTINCT `cp`.`property_id`
-							FROM `categories_properties` as `cp`
-							WHERE `cp`.`category_id` IN $categories_ids
-						)";
-					$i--;
-					if ($i > 0) {
-						$sql_ors = $sql_ors . "
-						OR ";
-					}
-				}
-				
-				if (strlen($specials_ids) > 2) {
-					$sql_ors = $sql_ors . "
-						`Property`.`id` IN (
-							SELECT DISTINCT `ps`.`property_id`
-							FROM `properties_specials` as `ps`
-							WHERE `ps`.`special_id` = $specials_ids
-						)";
-					$i--;
-					if ($i > 0) {
-						$sql_ors = $sql_ors . "
-						OR ";
-					}
-				}
-				
-				if (strlen($features_ids) > 2) {
-					$sql_ors = $sql_ors . "
-						`Property`.`id` IN (
-							SELECT DISTINCT `fp`.`property_id`
-							FROM `features_properties` as `fp`
-							WHERE `fp`.`feature_id` = $features_ids
-						)";
-					$i--;
-				}
-				
-				$sql_ors = $sql_ors . "
-					)";
-				$sql = $sql . $sql_ors;
-			}
-			
-			$sql_ors_old =
-				"AND (
-					`Property`.`id` IN (
-						SELECT DISTINCT `cp`.`property_id`
-						FROM `categories_properties` as `cp`
-						WHERE `cp`.`category_id` IN $categories_ids
-					)
-					OR `Property`.`id` IN (
-						SELECT DISTINCT `ps`.`property_id`
-						FROM `properties_specials` as `ps`
-						WHERE `ps`.`special_id` = $specials_ids
-					)
-					OR `Property`.`id` IN (
-						SELECT DISTINCT `fp`.`property_id`
-						FROM `features_properties` as `fp`
-						WHERE `fp`.`feature_id` = $features_ids
-					)
-				)";
-			
-			
-			$search_result = $this->Property->query($sql);
+			$arriving = $this->arriving($this->data);
+			$departing = $this->departing($this->data);
+			$categories_ids = $this->categories($this->data);
+			$specials_ids = $this->specials($this->data);
+			$features_ids = $this->features($this->data);
+			debug($this->Search->debugSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids));			
+			$search_result = $this->Search->listProperties($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids);
 			$this->set('search_result', $search_result);
 		}
+		
 		$types = $this->Type->find('list');
 		$this->set(compact('types'));
 		$communities = $this->Community->find('list');
@@ -181,6 +99,7 @@ class SearchesController extends AppController {
 		$this->set(compact('specials'));
 		$features = $this->Feature->find('list');
 		$this->set(compact('features'));
+		
 	}
 
 }

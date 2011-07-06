@@ -15,8 +15,8 @@
 			<div class="or">
 				<?php
 					echo $this->Form->input('categories', array('type' => 'select', 'multiple' => 'checkbox'));
-					echo $this->Form->input('specials', array('type' => 'select', 'multiple' => 'checkbox'));
 					echo $this->Form->input('features', array('type' => 'select', 'multiple' => 'checkbox'));
+					echo $this->Form->input('specials', array('type' => 'select', 'multiple' => 'checkbox'));
 				?>
 			</div>
 		</fieldset>
