@@ -257,11 +257,13 @@ fieldset fieldset legend {
 }
 fieldset fieldset div {
 	clear: left;
-	margin: 0 20px;
+	margin: 0 8px;
+}
+#PropertyDescription{
+	height: 55.5px;
 }
 form div {
 	clear: both;
-	margin-bottom: 1em;
 	padding: .5em;
 	vertical-align: text-top;
 }
