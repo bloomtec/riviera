@@ -2,15 +2,12 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-DROP SCHEMA IF EXISTS `riviera` ;
 CREATE SCHEMA IF NOT EXISTS `riviera` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `riviera` ;
 
 -- -----------------------------------------------------
 -- Table `riviera`.`types`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`types` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`types` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -23,8 +20,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`communities`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`communities` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`communities` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
@@ -37,8 +32,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`places`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`places` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`places` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -51,8 +44,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`properties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`properties` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`properties` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `type_id` INT NOT NULL ,
@@ -63,7 +54,8 @@ CREATE  TABLE IF NOT EXISTS `riviera`.`properties` (
   `price` DOUBLE NULL ,
   `video` TEXT NULL ,
   `picture` VARCHAR(100) NULL COMMENT 'validar que si esta en home debe tener el picture' ,
-  `time_range` INT NULL COMMENT 'numero de dias que esta disponible la propiedad.' ,
+  `arriving` DATE NULL COMMENT 'numero de dias que esta disponible la propiedad.' ,
+  `departing` DATE NULL ,
   `show_in_home` TINYINT(1)  NULL ,
   `created` DATETIME NULL ,
   `updated` DATETIME NULL ,
@@ -93,8 +85,6 @@ COMMENT = 'des' ;
 -- -----------------------------------------------------
 -- Table `riviera`.`categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`categories` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -108,8 +98,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`categories_properties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`categories_properties` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`categories_properties` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `property_id` INT NOT NULL ,
@@ -133,8 +121,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`pictures`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`pictures` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`pictures` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `property_id` INT NOT NULL ,
@@ -155,8 +141,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`specials`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`specials` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`specials` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -170,8 +154,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`news`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`news` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`news` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NULL ,
@@ -186,8 +168,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`pages`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`pages` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`pages` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NULL ,
@@ -202,8 +182,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`properties_specials`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`properties_specials` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`properties_specials` (
   `id` INT NOT NULL ,
   `property_id` INT NOT NULL ,
@@ -227,8 +205,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`features`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`features` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`features` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -241,8 +217,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`features_properties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`features_properties` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`features_properties` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `feature_id` INT NOT NULL ,
@@ -266,8 +240,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`roles`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`roles` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`roles` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -279,8 +251,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `riviera`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `riviera`.`users` ;
-
 CREATE  TABLE IF NOT EXISTS `riviera`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `username` VARCHAR(45) NOT NULL ,
@@ -301,33 +271,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `riviera`.`types`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `riviera`;
-INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (1, 'Rental', NULL, NULL);
-INSERT INTO `riviera`.`types` (`id`, `name`, `created`, `updated`) VALUES (2, 'Real Estate', NULL, NULL);
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `riviera`.`roles`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `riviera`;
-INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (1, 'admin');
-INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (2, 'user');
-INSERT INTO `riviera`.`roles` (`id`, `name`) VALUES (3, 'client');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `riviera`.`users`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `riviera`;
-INSERT INTO `riviera`.`users` (`id`, `username`, `password`, `role_id`) VALUES (1, 'admin', '55e23b9fe6ba18157d8f45b9785079d87851d791', 1);
-
-COMMIT;

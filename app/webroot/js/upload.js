@@ -24,9 +24,10 @@ $(document).ready(function() {
 			var nombre = file[(file.length - 1)];
 			var name = c.name;
 			$("#single-field").val(name);
-			$.post(server + "pictures/resizeImage", {'name':nombre,'folder':path}, function(data){
-				
+			$.post(server + "pictures/resizeImage", {name:nombre,folder:'pictures'}, function(data){
+			
 			});
+
 		}
 	});
 	

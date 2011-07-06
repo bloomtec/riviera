@@ -137,24 +137,24 @@ class PicturesController extends AppController {
 			
 			$this->Attachment->resize_image(
 				"resize",
-				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
-				"img/pictures/" . $_POST["folder"] . "/640x480",
+				"img/pictures/" . $_POST["name"],
+				"img/pictures/640x480",
 				$_POST["name"],
 				640,
 				480
 			);
 			$this->Attachment->resize_image(
 				"resize",
-				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
-				"img/pictures/" . $_POST["folder"] . "/256x256",
+				"img/pictures/" . $_POST["name"],
+				"img/pictures/256x256",
 				$_POST["name"],
 				256,
 				256
 			);
 			$this->Attachment->resize_image(
 				"resize",
-				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
-				"img/pictures/" . $_POST["folder"] . "/128x128",
+				"img/pictures/" . $_POST["name"],
+				"img/pictures/128x128",
 				$_POST["name"],
 				128,
 				128

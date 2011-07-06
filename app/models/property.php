@@ -13,16 +13,6 @@ class Property extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'community_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'You must create a community before trying to add a property',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'place_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),

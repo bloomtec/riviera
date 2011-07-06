@@ -246,6 +246,10 @@ fieldset fieldset {
 	margin-top: 0px;
 	margin-bottom: 20px;
 	padding: 16px 10px;
+	float:left;
+	width: auto;
+	height: 193.2px;
+	overflow-y: auto;
 }
 fieldset fieldset legend {
 	font-size: 120%;
@@ -277,6 +281,29 @@ form div.submit {
 	clear: both;
 	margin-top: 10px;
 }
+form .fields{
+	float:left;
+	width: 60%;
+	clear: none;
+}
+form .images{
+	float:right;
+	width: 35%;
+	clear: none;
+}
+form .float{
+	clear: none;
+	float: left;
+	width: 30%;
+}
+.images .preview{
+	height: 150px;
+	width: 100%;
+}
+.images .preview img{
+max-height: 100%;
+max-width: 100%;	
+}
 label {
 	display: block;
 	font-size: 110%;
@@ -284,9 +311,9 @@ label {
 }
 input, textarea {
 	clear: both;
-	font-size: 140%;
+	font-size: 100%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
-	padding: 1%;
+	padding: 0.5%;
 	width:98%;
 }
 select {
@@ -539,3 +566,4 @@ div.code-coverage-results span.result-good {
 #url-rewriting-warning {
 	display: none;
 }
+
