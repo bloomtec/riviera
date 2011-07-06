@@ -23,8 +23,6 @@
 		<td><?php echo $feature['Feature']['updated']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $feature['Feature']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $feature['Feature']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $feature['Feature']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $feature['Feature']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -42,12 +40,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Feature', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

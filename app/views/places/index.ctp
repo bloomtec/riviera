@@ -23,8 +23,6 @@
 		<td><?php echo $place['Place']['lat']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $place['Place']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $place['Place']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $place['Place']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $place['Place']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -42,12 +40,4 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Place', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

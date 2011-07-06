@@ -12,15 +12,7 @@
 	</li>
 
 	<li>
-		<?php echo $html -> link("List Properties", array("controller" => "properties", "action" => "index"));?>
-	</li>
-
-	<li>
 		<?php echo $html -> link("List Specials", array("controller" => "specials", "action" => "index"));?>
-	</li>
-
-	<li>
-		<?php echo $html -> link("List Pictures", array("controller" => "pictures", "action" => "index"));?>
 	</li>
 
 	<li>
