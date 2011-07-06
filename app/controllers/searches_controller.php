@@ -10,10 +10,21 @@ class SearchesController extends AppController {
 
 	function search() {
 		if (!empty($this->data)){
-			debug($this->data);
 			$type_id = $this->data['Search']['types'];
 			$community_id = $this->data['Search']['communities'];
 			$place_id = $this->data['Search']['places'];
+			$arriving =
+				$this->data['Search']['min_range']['year'] .
+				"-" .
+				$this->data['Search']['min_range']['month'] .
+				"-" .
+				$this->data['Search']['min_range']['day'];
+			$departing =
+				$this->data['Search']['max_range']['year'] .
+				"-" .
+				$this->data['Search']['max_range']['month'] .
+				"-" .
+				$this->data['Search']['max_range']['day'];
 			
 			$categories_ids = "(";
 			if (!empty($this->data['Search']['categories'])) {
@@ -59,7 +70,9 @@ class SearchesController extends AppController {
 				AND `Property`.`place_id` = $place_id
 				AND `Property`.`type_id` = `Type`.`id`
 				AND `Property`.`community_id` = `Community`.`id`
-				AND `Property`.`place_id` = `Place`.`id`";
+				AND `Property`.`place_id` = `Place`.`id`
+				AND `Property`.`arriving` <= '$arriving'
+				AND `Property`.`departing` >= '$departing'";
 			
 			$sql = $sql_ands;
 				
