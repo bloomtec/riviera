@@ -10,6 +10,7 @@ class SearchesController extends AppController {
 
 	function search() {
 		if (!empty($this->data)){
+			debug($this->data);
 			$type_id = $this->data['Search']['types'];
 			$community_id = $this->data['Search']['communities'];
 			$place_id = $this->data['Search']['places'];
