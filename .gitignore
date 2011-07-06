@@ -10,5 +10,8 @@
 /app/tmp/tests/*
 /app/webroot/img/*
 /app/webroot/img/pictures/*
+/app/webroot/img/pictures/640x480/*
+/app/webroot/img/pictures/256x256/*
+/app/webroot/img/pictures/128x128/*
 /app/webroot/files/*
 /cake/console/cake
