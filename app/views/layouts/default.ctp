@@ -28,8 +28,9 @@
 		<?php
 			echo $this->Html->meta('icon');
 			
-			echo $this->Html->css('cake.generic');
+			echo $this->Html->css('reset');
 			echo $this->Html->css("ie");
+			echo $this->Html->css('front');
 			
 			echo $this->Html->script("jquery-1.6.1.min.js");
 			echo $this->Html->script("jquery-ui-1.8.14.custom.min.js");
