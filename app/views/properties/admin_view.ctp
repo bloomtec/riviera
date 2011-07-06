@@ -71,7 +71,6 @@
 	<?php if (!empty($property['Picture'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Property Id'); ?></th>
 		<th><?php __('Order'); ?></th>
 		<th><?php __('Path'); ?></th>
 		<th><?php __('Created'); ?></th>
@@ -87,7 +86,6 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $picture['property_id'];?></td>
 			<td><?php echo $picture['order'];?></td>
 			<td><?php
 					//echo $picture['path'];
