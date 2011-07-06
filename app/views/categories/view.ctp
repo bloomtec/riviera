@@ -27,5 +27,5 @@
 			&nbsp;
 		</dd>
 	</dl>
-<?php echo $this->element("properties-list",array("properties"=>$category['Property']));?>
+<?php echo $this->element("properties-list",array("properties"=>$this->requestAction("/categories/listProperties/".$category['Category']['id'])));?>
 </div>

@@ -12,5 +12,5 @@
 			&nbsp;
 		</dd>
 	</dl>
-<?php echo $this->element("properties-list",array("properties"=>$special['Property']));?>
+<?php echo $this->element("properties-list",array("properties"=>$this->requestAction("/specials/listProperties/".$special['Special']['id'])));?>
 </div>

@@ -5,15 +5,15 @@ class CommunitiesController extends AppController {
 	
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('listProperties', 'view');
+		$this->Auth->allow('listProperties', 'view','index');
 	}
-	
-	function index() {
+	function index(){
 		$this->Community->recursive = 0;
 		$this->set('communities', $this->paginate());
 	}
 
 	function view($id = null) {
+		$this->Community->recursive = 1;
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid community', true));
 			$this->redirect(array('action' => 'index'));

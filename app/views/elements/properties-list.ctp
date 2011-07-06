@@ -1,3 +1,4 @@
+<?php debug($properties);?>
 <table class="properties-list">
 	<tr>
 			<th>Name</th>
