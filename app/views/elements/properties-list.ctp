@@ -18,7 +18,7 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $property['Property']['name']; ?>&nbsp;</td>
+		<td><?php echo $html->link($property['Property']['name'],array("controller"=>"properties","action"=>"view",$property['Property']['id'])); ?>&nbsp;</td>
 		<td><?php echo $property['Property']['description']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($property['Type']['name'], array('controller' => 'types', 'action' => 'view', $property['Type']['id'])); ?>

@@ -1,13 +1,24 @@
-<div class="pages_form">
+<div class="pages">
 <?php echo $this->Form->create('Page');?>
 	<fieldset>
-		<legend><?php __('Admin Add Page'); ?></legend>
+ 		<legend><?php __('Nueva Página'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
 		echo $this->Form->input('title');
-		echo $this->Form->input('content');
-		echo $this->Form->input('order');
+		echo $this->Form->input('description');
+		echo $this->Form->input('slug');
+		echo $this->Form->input('content',array("name"=>"editor"));
+		
+
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
+<?php echo $this->Form->end("Guardar");?>
+	
 </div>
+
+<script type="text/javascript">
+					CKEDITOR.replace( 'editor',{
+        				filebrowserUploadUrl : '/upload.php',
+        				filebrowserBrowseUrl : '/admin/pages/wysiwyg',
+					} );
+	
+</script>

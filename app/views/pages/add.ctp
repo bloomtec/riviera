@@ -1,10 +1,12 @@
 <div class="pages form">
 <?php echo $this->Form->create('Page');?>
 	<fieldset>
-		<legend><?php __('Add Page'); ?></legend>
+ 		<legend><?php __('Add Page'); ?></legend>
 	<?php
 		echo $this->Form->input('title');
+		echo $this->Form->input('description');
 		echo $this->Form->input('content');
+		echo $this->Form->input('slug');
 		echo $this->Form->input('order');
 	?>
 	</fieldset>

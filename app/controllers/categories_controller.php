@@ -5,7 +5,7 @@ class CategoriesController extends AppController {
 	
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('listProperties', 'view');
+			$this->Auth->allow('listProperties', 'view','index');
 	}
 	
 	function index() {

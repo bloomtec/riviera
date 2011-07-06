@@ -1,55 +1,17 @@
-<div class="pages index">
-	<h2><?php __('Pages');?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('content');?></th>
-			<th><?php echo $this->Paginator->sort('order');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('updated');?></th>
-			<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-	$i = 0;
-	foreach ($pages as $page):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr<?php echo $class;?>>
-		<td><?php echo $page['Page']['id']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['title']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['content']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['order']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['created']; ?>&nbsp;</td>
-		<td><?php echo $page['Page']['updated']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $page['Page']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $page['Page']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $page['Page']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $page['Page']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-	));
-	?>	</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Price Shoes</title>
+<style type="text/css">
+	
+</style>
+</head>
 
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+<body style="width:100%; background:#1b1b1b; margin:0;">
+	<div class="container" style="width:1024px; margin:0 auto; scroll-x:false;">
+		<?php echo $html->image("expectativa.jpg");?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Page', true), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+
+</body>
+</html>

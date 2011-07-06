@@ -7,5 +7,5 @@
 			&nbsp;
 		</dd>
 	</dl>
-<?php echo $this->element("properties-list",array("properties"=>$community['Property']));?>
+<?php echo $this->element("properties-list",array("properties"=>$this->requestAction("/communities/listProperties/".$community['Community']['id'])));?>
 </div>

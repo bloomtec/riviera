@@ -40,6 +40,8 @@
 			echo $this->Html->script("upload.js");
 			echo $this->Html->script("superfish.js");
 			echo $this->Html->script("admin.js");
+			echo $this->Html->script("ckeditor/ckeditor");
+			echo $this->Html->script("fileBrowser");
 			
 			echo $scripts_for_layout;
 		?>
@@ -100,6 +102,20 @@
 						<ul>
 							<li><?php echo $html->link("List Features", array("controller"=>"features", "action"=>"index")); ?></li>
 							<li><?php echo $html->link("Add Feature", array("controller"=>"features", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+					<li>
+						<?php echo $html->link("News", array("controller"=>"news", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List News", array("controller"=>"news", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add News", array("controller"=>"news", "action"=>"add")); ?></li>
+						</ul>
+					</li>
+										<li>
+						<?php echo $html->link("Pages", array("controller"=>"pages", "action"=>"index")); ?>
+						<ul>
+							<li><?php echo $html->link("List Pages", array("controller"=>"pages", "action"=>"index")); ?></li>
+							<li><?php echo $html->link("Add Page", array("controller"=>"pages", "action"=>"add")); ?></li>
 						</ul>
 					</li>
 					<li>

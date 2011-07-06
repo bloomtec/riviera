@@ -5,9 +5,12 @@ class SpecialsController extends AppController {
 	
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('listProperties', 'view');
+		$this->Auth->allow('listProperties', 'view','index','lasts');
 	}
-
+	function lasts(){
+		return $this->Special->find("all",array("limit"=>"5","order"=>array("Special.id DESC"))); 	
+	}
+	
 	function index() {
 		$this->Special->recursive = 0;
 		$this->set('specials', $this->paginate());

@@ -164,6 +164,8 @@ CREATE  TABLE IF NOT EXISTS `riviera`.`pages` (
   `title` VARCHAR(45) NULL ,
   `content` LONGTEXT NULL ,
   `order` INT NULL ,
+  `slug` VARCHAR(45) NULL ,
+  `description` TEXT NULL ,
   `created` DATETIME NULL ,
   `updated` DATETIME NULL ,
   PRIMARY KEY (`id`) )
@@ -176,7 +178,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `riviera`.`properties_specials` ;
 
 CREATE  TABLE IF NOT EXISTS `riviera`.`properties_specials` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `property_id` INT NOT NULL ,
   `special_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,

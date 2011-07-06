@@ -5,9 +5,11 @@ class PropertiesController extends AppController {
 	
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('view');
+			$this->Auth->allow('listProperties', 'view','index','slide');
 	}
-
+	function slide(){
+		return $this->Property->find("all",array("conditions"=>array("Property.show_in_home"=>true)));
+	}
 	function index() {
 		$this->Property->recursive = 0;
 		$this->set('properties', $this->paginate());
