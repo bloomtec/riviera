@@ -304,6 +304,10 @@ form .float{
 max-height: 100%;
 max-width: 100%;	
 }
+.thetime{
+	clear:none;
+	float:left;
+}
 label {
 	display: block;
 	font-size: 110%;

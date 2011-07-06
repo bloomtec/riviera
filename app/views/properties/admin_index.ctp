@@ -10,7 +10,6 @@
 			<th><?php echo $this->Paginator->sort('price');?></th>
 			<th><?php echo $this->Paginator->sort('video');?></th>
 			<th><?php echo $this->Paginator->sort('picture');?></th>
-			<th><?php echo $this->Paginator->sort('time_range');?></th>
 			<th><?php echo $this->Paginator->sort('show_in_home');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
@@ -40,7 +39,6 @@
 				//echo $property['Property']['picture'];
 				echo $html->image('pictures/' . $property['Property']['picture'], array("width"=>"200"));
 			?>&nbsp;</td>
-		<td><?php echo $property['Property']['time_range']; ?>&nbsp;</td>
 		<td><?php echo $property['Property']['show_in_home']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $property['Property']['id'])); ?>

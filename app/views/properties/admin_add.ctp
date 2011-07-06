@@ -8,25 +8,31 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('name',array("div"=>"float"));
 		echo $this->Form->input('price',array("div"=>"float"));
-		echo $this->Form->input('time_range',array("div"=>"float"));
+		
 		echo $this->Form->input('description');
+		echo $this->Form->input('arriving',array("div"=>"thetime"));
+		echo $this->Form->input('departing',array("div"=>"thetime"));
+		echo "<div style='clear:both;'></div>";
 		echo "<fieldset>";
 		echo $this->Form->input('type_id');
 		echo $this->Form->input('community_id');
 		echo $this->Form->input('place_id');
-		
+		echo "<div style='clear:both;'></div>";
 		echo "</fieldset>";
 		
 		echo "<fieldset>";
 		echo $this->Form->input('Category', array('type' => 'select','multiple' => 'checkbox'));
+		echo "<div style='clear:both;'></div>";
 		echo "</fieldset>";
 		
 		echo "<fieldset>";
 		echo $this->Form->input('Feature', array('type' => 'select','multiple' => 'checkbox'));
+		echo "<div style='clear:both;'></div>";
 		echo "</fieldset>";
 		
 		echo "<fieldset>";
 		echo $this->Form->input('Special', array('type' => 'select','multiple' => 'checkbox'));
+		echo "<div style='clear:both;'></div>";
 		echo "</fieldset>";
 	?>
 	</div>
