@@ -81,8 +81,7 @@ class SearchesController extends AppController {
 			$departing = $this->departing($this->data);
 			$categories_ids = $this->categories($this->data);
 			$specials_ids = $this->specials($this->data);
-			$features_ids = $this->features($this->data);
-			debug($this->Search->debugSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids));			
+			$features_ids = $this->features($this->data);			
 			$search_result = $this->Search->listProperties($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids);
 			$this->set('search_result', $search_result);
 		}

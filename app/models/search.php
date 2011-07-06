@@ -8,10 +8,6 @@ class Search extends AppModel {
 		return $this->query($this->getSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids));		
 	}
 	
-	public function debugSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids) {
-		return $this->getSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids);
-	}
-	
 	private function getSQL($type_id, $community_id, $place_id, $arriving, $departing, $categories_ids, $specials_ids, $features_ids){ 
 		return
 			$this->sqlAnds($type_id, $community_id, $place_id, $arriving, $departing) .
@@ -81,7 +77,7 @@ class Search extends AppModel {
 					`Property`.`id` IN (
 						SELECT DISTINCT `fp`.`property_id`
 						FROM `features_properties` as `fp`
-						WHERE `fp`.`feature_id` = $features_ids
+						WHERE `fp`.`feature_id` IN $features_ids
 					)";
 				$i--;
 				if ($i > 0) {
@@ -95,7 +91,7 @@ class Search extends AppModel {
 					`Property`.`id` IN (
 						SELECT DISTINCT `ps`.`property_id`
 						FROM `properties_specials` as `ps`
-						WHERE `ps`.`special_id` = $specials_ids
+						WHERE `ps`.`special_id` IN $specials_ids
 					)";
 				$i--;
 			}
