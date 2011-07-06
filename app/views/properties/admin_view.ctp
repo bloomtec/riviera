@@ -44,9 +44,14 @@
 			?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Time Range'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Arriving'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $property['Property']['time_range']; ?>
+			<?php echo $property['Property']['arriving']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Departing'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $property['Property']['departing']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Show In Home'); ?></dt>
