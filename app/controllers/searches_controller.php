@@ -52,10 +52,13 @@ class SearchesController extends AppController {
 			
 			$sql_ands =
 				"SELECT *
-				FROM `properties` as `Property`
+				FROM `properties` as `Property`, `types` as `Type`, `communities` as `Community`, `places` as `Place`
 				WHERE `Property`.`type_id` = $type_id
 				AND `Property`.`community_id` = $community_id
-				AND `Property`.`place_id` = $place_id";
+				AND `Property`.`place_id` = $place_id
+				AND `Property`.`type_id` = `Type`.`id`
+				AND `Property`.`community_id` = `Community`.`id`
+				AND `Property`.`place_id` = `Place`.`id`";
 			
 			$sql = $sql_ands;
 				

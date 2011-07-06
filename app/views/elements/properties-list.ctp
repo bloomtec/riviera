@@ -1,15 +1,13 @@
 <table class="properties-list">
 	<tr>
-			<th>name</th>
-			<th>description></th>
-			<th>type_id</th>
-			<th>community_id/th>
-			<th>place</th>
-			<th>price</th>
-			<th><?php echo $this->Paginator->sort('video');?></th>
-			<th><?php echo $this->Paginator->sort('picture');?></th>
-			<th><?php echo $this->Paginator->sort('show_in_home');?></th>
-			<th class="actions"><?php __('Actions');?></th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Type</th>
+			<th>Community</th>
+			<th>Place</th>
+			<th>Price</th>
+			<th>Video</th>
+			<th>Picture</th>
 	</tr>
 	<?php 
 		$i = 0;
@@ -37,12 +35,6 @@
 				//echo $property['Property']['picture'];
 				echo $html->image('pictures/' . $property['Property']['picture'], array("width"=>"200"));
 			?>&nbsp;</td>
-		<td><?php echo $property['Property']['show_in_home']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $property['Property']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $property['Property']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $property['Property']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $property['Property']['id'])); ?>
-		</td>
 	</tr>
 	<?php endforeach;?>
 </table>
