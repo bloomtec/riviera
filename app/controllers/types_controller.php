@@ -7,7 +7,12 @@ class TypesController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->allow('listProperties', 'view');
 	}
-
+	
+	function index() {
+		$this->Type->recursive = 0;
+		$this->set('types', $this->paginate());
+	}
+	
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid type', true));

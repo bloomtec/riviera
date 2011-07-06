@@ -20,7 +20,10 @@
 			<?php echo $this->Html->link($picture['Property']['name'], array('controller' => 'properties', 'action' => 'view', $picture['Property']['id'])); ?>
 		</td>
 		<td><?php echo $picture['Picture']['order']; ?>&nbsp;</td>
-		<td><?php echo $picture['Picture']['path']; ?>&nbsp;</td>
+		<td><?php
+				//echo $picture['Picture']['path'];
+				echo $html->image('pictures/' . $picture['Picture']['path'], array("width"=>"200"));
+			?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $picture['Picture']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $picture['Picture']['id'])); ?>

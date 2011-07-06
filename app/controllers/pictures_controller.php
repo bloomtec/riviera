@@ -2,6 +2,7 @@
 class PicturesController extends AppController {
 
 	var $name = 'Pictures';
+	var $components = array('Attachment');
 	
 	function beforeFilter() {
 		parent::beforeFilter();
@@ -126,4 +127,45 @@ class PicturesController extends AppController {
 		$this->Session->setFlash(__('Picture was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function resizeImage(){
+		
+		$this->autoRender = false;
+		Configure::write("debug", 0);
+			
+		if($_POST["name"] && $_POST["folder"]) {
+			
+			$this->Attachment->resize_image(
+				"resize",
+				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
+				"img/pictures/" . $_POST["folder"] . "/640x480",
+				$_POST["name"],
+				640,
+				480
+			);
+			$this->Attachment->resize_image(
+				"resize",
+				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
+				"img/pictures/" . $_POST["folder"] . "/256x256",
+				$_POST["name"],
+				256,
+				256
+			);
+			$this->Attachment->resize_image(
+				"resize",
+				"img/pictures/" . $_POST["folder"] . "/" . $_POST["name"],
+				"img/pictures/" . $_POST["folder"] . "/128x128",
+				$_POST["name"],
+				128,
+				128
+			);
+			
+			echo true;
+		}else{
+			echo false;
+		}
+		
+		exit(0);
+	}
+	
 }

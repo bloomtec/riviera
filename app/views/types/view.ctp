@@ -13,9 +13,6 @@
 	<?php if (!empty($type['Property'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Type Id'); ?></th>
-		<th><?php __('Community Id'); ?></th>
-		<th><?php __('Place Id'); ?></th>
 		<th><?php __('Name'); ?></th>
 		<th><?php __('Description'); ?></th>
 		<th><?php __('Price'); ?></th>
@@ -33,9 +30,6 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $property['type_id'];?></td>
-			<td><?php echo $property['community_id'];?></td>
-			<td><?php echo $property['place_id'];?></td>
 			<td><?php echo $property['name'];?></td>
 			<td><?php echo $property['description'];?></td>
 			<td><?php echo $property['price'];?></td>

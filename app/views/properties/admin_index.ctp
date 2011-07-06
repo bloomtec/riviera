@@ -36,7 +36,10 @@
 		</td>
 		<td><?php echo $property['Property']['price']; ?>&nbsp;</td>
 		<td><?php echo $property['Property']['video']; ?>&nbsp;</td>
-		<td><?php echo $property['Property']['picture']; ?>&nbsp;</td>
+		<td><?php
+				//echo $property['Property']['picture'];
+				echo $html->image('pictures/' . $property['Property']['picture'], array("width"=>"200"));
+			?>&nbsp;</td>
 		<td><?php echo $property['Property']['time_range']; ?>&nbsp;</td>
 		<td><?php echo $property['Property']['show_in_home']; ?>&nbsp;</td>
 		<td class="actions">

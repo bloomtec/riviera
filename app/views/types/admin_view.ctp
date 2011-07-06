@@ -1,11 +1,6 @@
-<div class="types view">
+<div class="types_view">
 <h2><?php  __('Type');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $type['Type']['id']; ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $type['Type']['name']; ?>
@@ -23,26 +18,11 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Type', true), array('action' => 'edit', $type['Type']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Type', true), array('action' => 'delete', $type['Type']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $type['Type']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Types', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Type', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Properties', true), array('controller' => 'properties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
 <div class="related">
 	<h3><?php __('Related Properties');?></h3>
 	<?php if (!empty($type['Property'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Id'); ?></th>
-		<th><?php __('Type Id'); ?></th>
-		<th><?php __('Community Id'); ?></th>
-		<th><?php __('Place Id'); ?></th>
 		<th><?php __('Name'); ?></th>
 		<th><?php __('Description'); ?></th>
 		<th><?php __('Price'); ?></th>
@@ -63,15 +43,14 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $property['id'];?></td>
-			<td><?php echo $property['type_id'];?></td>
-			<td><?php echo $property['community_id'];?></td>
-			<td><?php echo $property['place_id'];?></td>
 			<td><?php echo $property['name'];?></td>
 			<td><?php echo $property['description'];?></td>
 			<td><?php echo $property['price'];?></td>
 			<td><?php echo $property['video'];?></td>
-			<td><?php echo $property['picture'];?></td>
+			<td><?php
+					//echo $property['picture'];
+					echo $html->image('pictures/' . $property['picture'], array("width"=>"200"));
+				?></td>
 			<td><?php echo $property['time_range'];?></td>
 			<td><?php echo $property['show_in_home'];?></td>
 			<td><?php echo $property['created'];?></td>
@@ -86,9 +65,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Property', true), array('controller' => 'properties', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

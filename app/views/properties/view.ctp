@@ -70,7 +70,10 @@
 		<tr<?php echo $class;?>>
 			<td><?php echo $picture['property_id'];?></td>
 			<td><?php echo $picture['order'];?></td>
-			<td><?php echo $picture['path'];?></td>
+			<td><?php
+					//echo $picture['path'];
+					echo $html->image('pictures/' . $picture['path'], array("width"=>"200"));
+				?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View', true), array('controller' => 'pictures', 'action' => 'view', $picture['id'])); ?>
 			</td>
@@ -110,33 +113,6 @@
 
 </div>
 <div class="related">
-	<h3><?php __('Related Features');?></h3>
-	<?php if (!empty($property['Feature'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php __('Name'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($property['Feature'] as $feature):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $feature['name'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View', true), array('controller' => 'features', 'action' => 'view', $feature['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-</div>
-<div class="related">
 	<h3><?php __('Related Specials');?></h3>
 	<?php if (!empty($property['Special'])):?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -158,6 +134,33 @@
 			<td><?php echo $special['description'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View', true), array('controller' => 'specials', 'action' => 'view', $special['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+</div>
+<div class="related">
+	<h3><?php __('Related Features');?></h3>
+	<?php if (!empty($property['Feature'])):?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php __('Name'); ?></th>
+		<th class="actions"><?php __('Actions');?></th>
+	</tr>
+	<?php
+		$i = 0;
+		foreach ($property['Feature'] as $feature):
+			$class = null;
+			if ($i++ % 2 == 0) {
+				$class = ' class="altrow"';
+			}
+		?>
+		<tr<?php echo $class;?>>
+			<td><?php echo $feature['name'];?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View', true), array('controller' => 'features', 'action' => 'view', $feature['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

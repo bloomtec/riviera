@@ -5,7 +5,7 @@ class CommunitiesController extends AppController {
 	
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('listProperties');
+		$this->Auth->allow('listProperties', 'view');
 	}
 	
 	function index() {

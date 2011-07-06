@@ -28,9 +28,6 @@
 	<?php if (!empty($category['Property'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Type Id'); ?></th>
-		<th><?php __('Community Id'); ?></th>
-		<th><?php __('Place Id'); ?></th>
 		<th><?php __('Name'); ?></th>
 		<th><?php __('Description'); ?></th>
 		<th><?php __('Price'); ?></th>
@@ -39,7 +36,7 @@
 		<th><?php __('Time Range'); ?></th>
 		<th><?php __('Show In Home'); ?></th>
 		<th><?php __('Created'); ?></th>
-		<th><?php __('Upadated'); ?></th>
+		<th><?php __('Updated'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -51,18 +48,18 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $property['type_id'];?></td>
-			<td><?php echo $property['community_id'];?></td>
-			<td><?php echo $property['place_id'];?></td>
 			<td><?php echo $property['name'];?></td>
 			<td><?php echo $property['description'];?></td>
 			<td><?php echo $property['price'];?></td>
 			<td><?php echo $property['video'];?></td>
-			<td><?php echo $property['picture'];?></td>
+			<td><?php
+					//echo $property['picture'];
+					echo $html->image('pictures/' . $property['picture'], array("width"=>"200"));
+				?></td>
 			<td><?php echo $property['time_range'];?></td>
 			<td><?php echo $property['show_in_home'];?></td>
 			<td><?php echo $property['created'];?></td>
-			<td><?php echo $property['upadated'];?></td>
+			<td><?php echo $property['updated'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View', true), array('controller' => 'properties', 'action' => 'view', $property['id'])); ?>
 				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'properties', 'action' => 'edit', $property['id'])); ?>

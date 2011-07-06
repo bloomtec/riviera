@@ -13,7 +13,10 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Path'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $picture['Picture']['path']; ?>
+			<?php
+				//echo $picture['Picture']['path'];
+				echo $html->image('pictures/' . $picture['Picture']['path'], array("width"=>"200"));
+			?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
