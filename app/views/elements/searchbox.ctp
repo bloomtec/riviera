@@ -8,6 +8,8 @@
 					echo $this->Form->input('types');
 					echo $this->Form->input('communities');
 					echo $this->Form->input('places');
+					echo $this->Form->input('min_range', array('type' => 'date'));
+					echo $this->Form->input('max_range', array('type' => 'date'));
 				?>
 			</div>
 			<div class="or">
